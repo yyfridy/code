@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            border:1px solid #ccc;
+            height:500px;
+            width:500px;
+            text-align:center;
+            margin:0 auto;
+            background:#ccc;
+        }
+        img{
+            vertical-align:middle;
+        }
+        div span{
+            height:100px;
+            width:0;
+            overflow:hidden;
+            display:inline-block;
+            vertical-align:middle;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="test">
+        <img src="imgs/西瓜.png" alt=""><span></span>
+    </div>
+</body>
+<script>
+//    js的ajax
+    var xhr=new XMLHttpRequest();
+    xhr.open('get','send-ajax-data.php');
+    xhr.onreadystatechange=function(){
+        var DONE=4;
+        var OK=200;
+        if(xhr.readyState===DONE){
+            if(xhr.status===OK){
+                alert(xhr.responseText);
+            }else{
+                alert('Error:'+xhr.status);
+            }
+
+        }
+    };
+    xhr.send(null);
+//jq的ajax
+    $.get('send-ajax-data.php')
+            .done(function(data){
+                alert(data);
+            })
+            .fail(function(data){
+                alert('Error:'+data);
+            });
+
+
+    function test(){
+        function test(){
+            var iframe=doucument.getElementById('iframe');
+            var win=iframe.contentWindow;
+            var doc=win.document;
+            var name=win.name;
+        }
+    }
+</script>
+<iframe id="iframe" src="http://damonare.cn/b.html" onload="test()"></iframe>
+</html>
